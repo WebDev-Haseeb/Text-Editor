@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 * {
     margin: 0;
@@ -7,77 +7,126 @@
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #fff;
+    border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #cc0abf;
+    background: #333;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #666;
+}
+
+::selection {
+    background-color: #138dd9;
+    color: white;
 }
 
 body {
     height: 100vh;
-    font-family: 'Roboto', sans-serif;
-    background-image: linear-gradient(to bottom, #ae4581, #a54991, #974fa0, #8457ad, #6b5eb9, #586cc7, #3d7ad2, #0087db, #009ee7, #00b4ed, #00c9ef, #28ddee);
-
+    font-family: 'Poppins', sans-serif;
+    background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
 }
 
-.container {
+.editor-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: 80vh;
     width: 80vw;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    padding: 1vh 5vw;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
 }
 
-.options {
+.editor-header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.editor-header h1 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 10%;
-    width: 100%;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
 }
 
-/* Style the line beautifylly.  */
-.line {
-    height: 1px;
-    width: 100%;
-    background-color: #000;
-    margin: 2vh 0;
-}
-
-.textContainer {
+.toolbar-group {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90%;
-    width: 100%;
-    margin-bottom: 5vh;
+    gap: 10px;
 }
 
-.textArea {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.tool-button {
+    background-color: transparent;
+    border: none;
+    color: #4a4a4a;
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+}
+
+.tool-button:hover {
+    background-color: #e9ecef;
+    color: #138dd9;
+}
+
+.editor-content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.text-area {
+    width: 100%;
     height: 100%;
-    width: 100%;
-    margin-top: 2vh;
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.5;
-    outline: none;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
     border: none;
     resize: none;
+    outline: none;
+}
+
+.text-area::placeholder {
+    color: #aaa;
+}
+
+
+/* Responsiveness.  */
+@media (max-width: 768px) {
+    .editor-container {
+        width: 95vw;
+        height: 90vh;
+    }
+
+    .toolbar {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .toolbar-group {
+        margin-bottom: 10px;
+    }
 }

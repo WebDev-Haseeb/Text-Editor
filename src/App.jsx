@@ -1,8 +1,21 @@
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBold, faItalic, faStrikethrough, faAlignLeft, faAlignCenter, faAlignRight, faImage, faPalette, faFont, faUndo, faRedo } from '@fortawesome/free-solid-svg-icons';
 import './App.css';
 
 export default function App() {
+    const [isBold, setIsBold] = useState(true);
+
+    function handleBold() {
+        setIsBold(!isBold);
+
+        if (isBold) {
+            document.getElementById('bold').classList.add('clicked');
+        } else {
+            document.getElementById('bold').classList.remove('clicked');
+        }
+    }
+
     return (
         <div className='editor-container'>
 
@@ -13,38 +26,38 @@ export default function App() {
             <div className="toolbar">
 
                 <div className="toolbar-group">
-                    <button className="tool-button"><FontAwesomeIcon icon={faBold} /></button>
-                    <button className="tool-button"><FontAwesomeIcon icon={faItalic} /></button>
-                    <button className="tool-button"><FontAwesomeIcon icon={faStrikethrough} /></button>
+                    <button id='bold' className="tool-button" onClick={handleBold}><FontAwesomeIcon icon={faBold} /></button>
+                    <button id='italic' className="tool-button"><FontAwesomeIcon icon={faItalic} /></button>
+                    <button id='strike' className="tool-button"><FontAwesomeIcon icon={faStrikethrough} /></button>
                 </div>
 
                 <div className="toolbar-group">
-                    <button className="tool-button"><strong>H1</strong></button>
-                    <button className="tool-button"><strong>H2</strong></button>
-                    <button className="tool-button"><strong>H3</strong></button>
+                    <button id='h1' className="tool-button"><strong>H1</strong></button>
+                    <button id='h2' className="tool-button"><strong>H2</strong></button>
+                    <button id='h3' className="tool-button"><strong>H3</strong></button>
                 </div>
 
                 <div className="toolbar-group">
-                    <button className="tool-button"><FontAwesomeIcon icon={faAlignLeft} /></button>
-                    <button className="tool-button"><FontAwesomeIcon icon={faAlignCenter} /></button>
-                    <button className="tool-button"><FontAwesomeIcon icon={faAlignRight} /></button>
+                    <button id='leftAllign' className="tool-button"><FontAwesomeIcon icon={faAlignLeft} /></button>
+                    <button id='centerAllign' className="tool-button"><FontAwesomeIcon icon={faAlignCenter} /></button>
+                    <button id='rightAllign' className="tool-button"><FontAwesomeIcon icon={faAlignRight} /></button>
                 </div>
 
                 <div className="toolbar-group">
-                    <button className="tool-button"><FontAwesomeIcon icon={faImage} /></button>
-                    <button className="tool-button"><FontAwesomeIcon icon={faPalette} /></button>
-                    <button className="tool-button"><FontAwesomeIcon icon={faFont} /></button>
+                    <button id='img' className="tool-button"><FontAwesomeIcon icon={faImage} /></button>
+                    <button id='color' className="tool-button"><FontAwesomeIcon icon={faPalette} /></button>
+                    <button id='font' className="tool-button"><FontAwesomeIcon icon={faFont} /></button>
                 </div>
 
                 <div className="toolbar-group">
-                    <button className="tool-button"><FontAwesomeIcon icon={faUndo} /></button>
-                    <button className="tool-button"><FontAwesomeIcon icon={faRedo} /></button>
+                    <button id='undo' className="tool-button"><FontAwesomeIcon icon={faUndo} /></button>
+                    <button id='redo' className="tool-button"><FontAwesomeIcon icon={faRedo} /></button>
                 </div>
 
             </div>
 
             <div className="editor-content">
-                <textarea className='text-area' placeholder='Express your thoughts here...'></textarea>
+                <textarea id='area' className='text-area' placeholder='Express your thoughts here...'></textarea>
             </div>
 
         </div>
